@@ -9,7 +9,36 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="bg-gray-200">
+    <nav class="p-6 bg-white flex justify-between ">
+        <ul class="flex ite">
+            <li>
+                <a href="" class="p-3">Home</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Dashbord</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Post</a>
+            </li>
+        </ul>
+
+        <ul class="flex ite">
+            <li>
+                <a href="" class="p-3">SAMRAT</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Login</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Register</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Login</a>
+            </li>
+        </ul>
+
+    </nav>
     @yield('content')
 </body>
 
