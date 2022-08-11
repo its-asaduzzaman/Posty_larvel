@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-gray-200">
-    <nav class="p-6 bg-white flex justify-between ">
+    <nav class="p-6 bg-white flex justify-between mb-9">
         <ul class="flex ite">
             <li>
                 <a href="" class="p-3">Home</a>
@@ -19,7 +19,7 @@
                 <a href="" class="p-3">Dashbord</a>
             </li>
             <li>
-                <a href="" class="p-3">Post</a>
+                <a href="{{ route('post') }}" class="p-3">Post</a>
             </li>
         </ul>
 
@@ -31,7 +31,7 @@
                 <a href="" class="p-3">Login</a>
             </li>
             <li>
-                <a href="" class="p-3">Register</a>
+                <a href=" {{ route('register') }} " class="p-3">Register</a>
             </li>
             <li>
                 <a href="" class="p-3">Login</a>
