@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'password' => ' required| confirmed',
         ]);
 
-        dd('store');
+        // dd('store');
         //store user
         User::create(
             [
@@ -36,6 +36,7 @@ class RegisterController extends Controller
         );
         //sign the user in
         //redirect
+        return redirect()->route('dashboard');
 
     }
 }
