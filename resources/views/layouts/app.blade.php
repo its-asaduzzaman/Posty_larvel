@@ -29,7 +29,10 @@
                 <a href="" class="p-3">SAMRAT</a>
             </li>
             <li>
-                <a href="{{'logout'}}" class="p-3">Logout</a>
+                <form action= "{{route('logout')}}" method= "post" class="inline" >
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
             </li>
             @endauth
 
