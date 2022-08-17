@@ -29,7 +29,7 @@
                 <a href="" class="p-3">SAMRAT</a>
             </li>
             <li>
-                <a href="" class="p-3">Logout</a>
+                <a href="{{'logout'}}" class="p-3">Logout</a>
             </li>
             @endauth
 
