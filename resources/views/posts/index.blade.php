@@ -30,6 +30,11 @@
 
                     </div>
                 @endforeach
+
+                {{ $posts->links() }}
+                {{-- {{ $items->links('pagination::semantic-ui') }} --}}
+            @else
+                <p>There are no post</p>
             @endif
         </div>
     </div>
