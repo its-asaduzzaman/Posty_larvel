@@ -22,11 +22,22 @@
             </form>
             @if ($posts->count())
                 @foreach ($posts as $post)
-                    <div class=" mb-4 bg-slate-100 p-5 rounded-lg" >
+                    <div class=" mb-4 bg-slate-100 p-5 rounded-lg">
                         <a href="" class=" font-bold">{{ $post->user->name }}</a> <span
                             class=" text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
                         <p class=" mb-2 ">{{ $post->body }}</p>
+                        <div class=" flex items-center">
+                            <form action="{{ route('posts.likes', $post->id) }}" method="post" class=" mr-1">
+                                @csrf
+                                <button type="submit" class=" text-blue-500">Like</button>
+                            </form>
+                            <form action="" method="post" class=" mr-1">
+                                @csrf
+                                <button type="submit" class=" text-blue-500">Unlike</button>
+                            </form>
+                            <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
+                        </div>
 
                     </div>
                 @endforeach
