@@ -22,42 +22,42 @@
             </form>
             @if ($posts->count())
                 @foreach ($posts as $post)
-                    <div class=" mb-4 bg-slate-100 p-5 rounded-lg">
-                        <a href="{{ route('users.posts', $post->user) }}" class=" font-bold">{{ $post->user->name }}</a>
-                        <span class=" text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
+                <div class=" mb-4 bg-slate-100 p-5 rounded-lg">
+                    <a href="{{ route('users.posts', $post->user) }}" class=" font-bold">{{ $post->user->name }}</a>
+                    <span class=" text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
-                        <p class=" mb-2 ">{{ $post->body }}</p>
+                    <p class=" mb-2 ">{{ $post->body }}</p>
 
-                        @can('delete', $post)
-                            <div>
-                                <form action="{{ route('posts.destroy', $post) }}" method="post">
+                    @can('delete', $post)
+                        <div>
+                            <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class=" text-blue-500">Delete</button>
+                            </form>
+                        </div>
+                    @endcan
+
+                    <div class=" flex items-center">
+                        @auth
+                            @if (!$post->likedBy(auth()->user()))
+                                <form action="{{ route('posts.likes', $post) }}" method="post" class=" mr-1">
+                                    @csrf
+                                    <button type="submit" class=" text-blue-500">Like</button>
+                                </form>
+                            @else
+                                <form action="{{ route('posts.likes', $post) }}" method="post" class=" mr-1">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class=" text-blue-500">Delete</button>
+                                    <button type="submit" class=" text-blue-500">Unlike</button>
                                 </form>
-                            </div>
-                        @endcan
+                            @endif
 
-                        <div class=" flex items-center">
-                            @auth
-                                @if (!$post->likedBy(auth()->user()))
-                                    <form action="{{ route('posts.likes', $post) }}" method="post" class=" mr-1">
-                                        @csrf
-                                        <button type="submit" class=" text-blue-500">Like</button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('posts.likes', $post) }}" method="post" class=" mr-1">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class=" text-blue-500">Unlike</button>
-                                    </form>
-                                @endif
-
-                            @endauth
-                            <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
-                        </div>
-
+                        @endauth
+                        <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
                     </div>
+
+                </div>
                 @endforeach
 
                 {{ $posts->links('pagination::semantic-ui') }}
